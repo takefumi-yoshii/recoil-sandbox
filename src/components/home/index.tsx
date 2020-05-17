@@ -6,6 +6,8 @@ export default () => {
   return (
     <>
       <h1>Next.js + Recoil - SSR example -</h1>
+      <hr />
+      <h3>1. INPUT VALUES FOR QUERY</h3>
       <p>
         label_name:{" "}
         <input
@@ -22,7 +24,9 @@ export default () => {
           onChange={hooks.handleChangeCount}
         />
       </p>
-      <a href={hooks.href}>{hooks.href}</a>
+      <hr />
+      <h3>2. SHOW SSR EXAMPLE</h3>
+      <p><a href={hooks.href}>{hooks.href}</a></p>
       <hr />
       {hooks.tasks.map((task, index) => (
         <div key={index}>{task.title}</div>
