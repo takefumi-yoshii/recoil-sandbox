@@ -6,6 +6,6 @@ import type { Atoms } from "./atoms";
 export let store: Store;
 // ______________________________________________________
 //
-export const initStore = (storeAtoms: Partial<Atoms> = {}) => {
-  store = createStore(storeAtoms);
+export const initStore = (initialAtoms: Partial<Atoms> = {}) => {
+  store = createStore(initialAtoms);
 };

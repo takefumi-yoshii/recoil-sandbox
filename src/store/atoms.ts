@@ -1,15 +1,22 @@
 import { atom } from "recoil";
-import { Task } from "./types";
+import { RecoilStates } from "./types";
 // ______________________________________________________
 //
 export type Atoms = {
-  tasks: Task[];
+  user_name: string;
+  email: string;
 };
 // ______________________________________________________
 //
-export const atomsFactory = (storeAtoms: Partial<Atoms> = {}) => ({
-  tasks: atom({
-    key: "tasks",
-    default: storeAtoms.tasks || [],
+export const atomsFactory = (
+  initialAtoms: Partial<Atoms> = {}
+): RecoilStates<Atoms> => ({
+  user_name: atom({
+    key: "user_name",
+    default: initialAtoms.user_name || "",
+  }),
+  email: atom({
+    key: "email",
+    default: initialAtoms.email || "",
   }),
 });

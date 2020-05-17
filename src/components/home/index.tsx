@@ -2,33 +2,24 @@ import React from "react";
 import { useHooks } from "./hooks";
 // ______________________________________________________
 //
-export type Props = {
-  label: string;
-  count: number;
-};
-// ______________________________________________________
-//
-const Page: React.FC<Props> = (props) => {
-  const hooks = useHooks(props);
+const Page: React.FC = () => {
+  const hooks = useHooks();
   return (
     <>
       <h1>Next.js + Recoil - SSR example -</h1>
       <hr />
       <h3>1. INPUT VALUES FOR QUERY</h3>
       <p>
-        label_name:{" "}
-        <input
-          type="text"
-          value={hooks.label}
-          onChange={hooks.handleChangeLabel}
-        />
+        user_name：
+        {hooks.user_name}
       </p>
       <p>
-        output_count:{" "}
+        <label htmlFor="email">email：</label>
         <input
-          type="number"
-          value={hooks.count}
-          onChange={hooks.handleChangeCount}
+          id="email"
+          type="email"
+          value={hooks.email}
+          onChange={hooks.handleChangeMail}
         />
       </p>
       <hr />
@@ -36,10 +27,6 @@ const Page: React.FC<Props> = (props) => {
       <p>
         <a href={hooks.href}>{hooks.href}</a>
       </p>
-      <hr />
-      {hooks.tasks.map((task, index) => (
-        <div key={index}>{task.title}</div>
-      ))}
     </>
   );
 };

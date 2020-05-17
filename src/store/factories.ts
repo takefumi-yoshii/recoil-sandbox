@@ -3,8 +3,8 @@ import { atomsFactory } from "./atoms";
 import type { Atoms } from "./atoms";
 // ______________________________________________________
 //
-const storeFactory = (storeAtoms: Partial<Atoms> = {}): Store => ({
-  atoms: atomsFactory(storeAtoms),
+const storeFactory = (initialAtoms: Partial<Atoms> = {}): Store => ({
+  atoms: atomsFactory(initialAtoms),
 });
 // ______________________________________________________
 //
@@ -13,12 +13,12 @@ declare global {
     __NEXT_RECOIL_STORE__: any;
   }
 }
-export function createStore(storeAtoms: Partial<Atoms> = {}) {
+export function createStore(initialAtoms: Partial<Atoms> = {}) {
   if (typeof window === "undefined") {
-    return storeFactory(storeAtoms);
+    return storeFactory(initialAtoms);
   }
   if (!window["__NEXT_RECOIL_STORE__"]) {
-    window["__NEXT_RECOIL_STORE__"] = storeFactory(storeAtoms);
+    window["__NEXT_RECOIL_STORE__"] = storeFactory(initialAtoms);
   }
   return window["__NEXT_RECOIL_STORE__"];
 }

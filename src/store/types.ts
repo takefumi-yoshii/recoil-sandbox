@@ -2,12 +2,6 @@ import type { RecoilState } from "recoil";
 import type { Atoms } from "./atoms";
 // ______________________________________________________
 //
-export interface Task {
-  title: string;
-  completed: boolean;
-}
-// ______________________________________________________
-//
 export type RecoilStates<T> = { [K in keyof T]: RecoilState<T[K]> };
 // ______________________________________________________
 //
