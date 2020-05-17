@@ -1,4 +1,10 @@
 import { RecoilState } from "recoil";
+import { atomsFactory } from "./factories";
+// ______________________________________________________
+//
+type UnwrapRecoilState<T> = T extends RecoilState<infer U> ? U : never;
+type UnwrapRecoilStateMap<T> = { [K in keyof T]: UnwrapRecoilState<T[K]> };
+type WrapRecoilStateMap<T> = { [K in keyof T]: RecoilState<T[K]> };
 // ______________________________________________________
 //
 export interface Task {
@@ -7,17 +13,13 @@ export interface Task {
 }
 // ______________________________________________________
 //
-export const initialStoreAtoms = {
-  tasks: [] as Task[],
-};
-export type StoreAtoms = typeof initialStoreAtoms;
+type AtomsFactoryReturn = ReturnType<typeof atomsFactory>;
+export type StoreAtomsState = UnwrapRecoilStateMap<AtomsFactoryReturn>;
 // ______________________________________________________
 //
-export type RecoilStateMap<T> = { [K in keyof T]: RecoilState<T[K]> };
-
 export type StoreState = {
-  atoms: StoreAtoms;
+  atoms: StoreAtomsState;
 };
 export type Store = {
-  atoms: RecoilStateMap<StoreAtoms>;
+  atoms: WrapRecoilStateMap<StoreAtomsState>;
 };

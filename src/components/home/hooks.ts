@@ -1,12 +1,13 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { store } from "../../pages/_app";
+import { store } from "../../store";
+import { Props } from "./index";
 // ______________________________________________________
 //
-export const useHooks = () => {
+export const useHooks = (props: Props) => {
   const tasks = useRecoilValue(store.atoms.tasks);
-  const [label, setLabel] = React.useState("");
-  const [count, setCount] = React.useState(1);
+  const [label, setLabel] = React.useState(props.label);
+  const [count, setCount] = React.useState(props.count);
   const href = React.useMemo(() => `/?label=${label}&count=${count}`, [
     label,
     count,

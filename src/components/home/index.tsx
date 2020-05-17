@@ -1,8 +1,15 @@
 import React from "react";
 import { useHooks } from "./hooks";
-
-export default () => {
-  const hooks = useHooks();
+// ______________________________________________________
+//
+export type Props = {
+  label: string;
+  count: number;
+};
+// ______________________________________________________
+//
+const Page: React.FC<Props> = (props) => {
+  const hooks = useHooks(props);
   return (
     <>
       <h1>Next.js + Recoil - SSR example -</h1>
@@ -26,7 +33,9 @@ export default () => {
       </p>
       <hr />
       <h3>2. SHOW SSR EXAMPLE</h3>
-      <p><a href={hooks.href}>{hooks.href}</a></p>
+      <p>
+        <a href={hooks.href}>{hooks.href}</a>
+      </p>
       <hr />
       {hooks.tasks.map((task, index) => (
         <div key={index}>{task.title}</div>
@@ -34,3 +43,6 @@ export default () => {
     </>
   );
 };
+// ______________________________________________________
+//
+export default Page;
