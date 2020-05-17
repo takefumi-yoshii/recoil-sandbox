@@ -24,7 +24,8 @@ export const atomsFactory = (storeAtoms: any = {}) => ({
     default: (storeAtoms.tasks || []) as Task[],
   }),
 });
-
+// ______________________________________________________
+//
 export const storeFactory = (
   storeAtoms: Partial<StoreAtomsState> = {}
 ): Store => ({
