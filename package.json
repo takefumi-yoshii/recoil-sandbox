@@ -1,0 +1,45 @@
+{
+  "name": "recoil-sandbox",
+  "version": "1.0.0",
+  "description": "recoil-sandbox",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "format": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write",
+    "format:check": "prettier \"./**/*.ts\" \"./**/*.tsx\" --check",
+    "test": "NODE_ENV=test jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takefumi-yoshii/recoil-sandbox.git"
+  },
+  "author": "Takepepe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/takefumi-yoshii/recoil-sandbox/issues"
+  },
+  "homepage": "https://github.com/takefumi-yoshii/recoil-sandbox#readme",
+  "dependencies": {
+    "next": "^9.4.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "recoil": "^0.0.7",
+    "swr": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.5",
+    "@types/react": "^16.9.35",
+    "@types/react-test-renderer": "^16.9.2",
+    "babel-jest": "^26.0.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "jest": "^26.0.1",
+    "prettier": "^2.0.5",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^25.5.1",
+    "typescript": "^3.8.3"
+  }
+}
