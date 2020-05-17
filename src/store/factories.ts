@@ -1,33 +1,24 @@
-import { StoreAtomsState, Store, Task } from "./types";
-import { atom } from "recoil";
+import { Store } from "./types";
+import { atomsFactory } from "./atoms";
+import type { Atoms } from "./atoms";
+// ______________________________________________________
+//
+const storeFactory = (storeAtoms: Partial<Atoms> = {}): Store => ({
+  atoms: atomsFactory(storeAtoms),
+});
 // ______________________________________________________
 //
 declare global {
   interface Window {
-    __NEXT_STORE__: any;
+    __NEXT_RECOIL_STORE__: any;
   }
 }
-export function getOrCreateStore(initialState: any = {}) {
+export function createStore(storeAtoms: Partial<Atoms> = {}) {
   if (typeof window === "undefined") {
-    return storeFactory(initialState);
+    return storeFactory(storeAtoms);
   }
-  if (!window["__NEXT_STORE__"]) {
-    window["__NEXT_STORE__"] = storeFactory(initialState);
+  if (!window["__NEXT_RECOIL_STORE__"]) {
+    window["__NEXT_RECOIL_STORE__"] = storeFactory(storeAtoms);
   }
-  return window["__NEXT_STORE__"];
+  return window["__NEXT_RECOIL_STORE__"];
 }
-// ______________________________________________________
-//
-export const atomsFactory = (storeAtoms: any = {}) => ({
-  tasks: atom({
-    key: "tasks",
-    default: (storeAtoms.tasks || []) as Task[],
-  }),
-});
-// ______________________________________________________
-//
-export const storeFactory = (
-  storeAtoms: Partial<StoreAtomsState> = {}
-): Store => ({
-  atoms: atomsFactory(storeAtoms),
-});
