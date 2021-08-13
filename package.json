@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/takefumi-yoshii/recoil-sandbox#readme",
   "dependencies": {
-    "next": "^9.4.0",
+    "next": "^11.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "recoil": "^0.0.7",
